@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jumbled Maps</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css"
+    />
+    <!-- Adding Roboto font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="countries.js"></script>
+  </head>
+  <body>
+    <div id="splash-screen">
+      <div class="message-box">
+        <h1>Jumbled Maps</h1>
+        <p>
+          Someone has jumbled up all the country names on this map. Can you put
+          the world to rights?
+        </p>
+        <p>
+          To correct a country name, just click on its label on the map and
+          enter the correct name.
+        </p>
+        <button id="start-button">Start Game</button>
+      </div>
+    </div>
+    <div id="map">
+      <button id="clear-storage">Clear Progress</button>
+    </div>
+    <div id="sidebar">
+      <div id="score-display">Score: 0 / 249</div>
+      <h2>Jumbled Maps</h2>
+      <!-- Tab Buttons -->
+      <div id="tab-container">
+        <button class="tab-button active" data-target="correct-country-names">
+          Correct
+        </button>
+        <button class="tab-button" data-target="incorrect-country-names">
+          Incorrect
+        </button>
+      </div>
+
+      <!-- Content Containers -->
+      <div id="correct-country-names">
+        <!-- Correct country names will be inserted here -->
+      </div>
+      <div id="incorrect-country-names" class="hidden">
+        <!-- Incorrect country names will be inserted here -->
+      </div>
+    </div>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
