@@ -1,0 +1,267 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif; /* Applying Roboto font */
+}
+#map {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+}
+#sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-left: 2px solid #ddd;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+}
+
+/* Splash Screen Styling */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+/* White Message Box */
+.message-box {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+.message-box h1 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.message-box p {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+/* Start Button */
+#start-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+#start-button:hover {
+  background: #45a049;
+}
+
+#score-display {
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Thin grey border */
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px; /* Add spacing below the border */
+}
+
+#correct-country-names,
+#incorrect-country-names {
+  width: 100%; /* Ensure they take up the full width of the sidebar */
+  padding: 10px; /* Add padding for spacing */
+  margin-top: 10px; /* Add some spacing from the elements above */
+  overflow-y: auto; /* Enable scrolling if the list gets too long */
+   padding-bottom: 10px; /* Adds space inside the div */
+  margin-bottom: 10px;  /* Adds space outside the div */
+}
+
+#correct-country-names ul,
+#incorrect-country-names ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+#correct-country-names li,
+#incorrect-country-names li {
+  padding: 5px 10px;
+  border-bottom: 1px solid #ddd; /* Separate each item with a light line */
+  font-size: 16px;
+ 
+}
+
+#correct-country-names li:last-child,
+#incorrect-country-names li:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  #sidebar {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 2px solid #ddd;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-height: none;
+  }
+  #map {
+    height: calc(100vh - 80px);
+    width: 100%;
+  }
+  #score-display {
+    font-size: 16px;
+    padding: 5px;
+  }
+  #clear-storage {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  /* Hide the <h2> and <p> elements on mobile */
+  #sidebar h2,
+  #sidebar p {
+    display: none;
+  }
+}
+
+.input-container {
+  z-index: 9999; /* Make sure it's on top of the map */
+  position: absolute; /* Position relative to the #map */
+  top: 40px; /* Adjust the vertical position */
+  left: 50%; /* Position horizontally in the middle */
+  transform: translateX(
+    -50%
+  ); /* Adjust the container to the left by 50% of its own width */
+  width: 300px; /* Make the container wider (3x larger) */
+  padding: 20px; /* Add more padding for the bigger container */
+}
+
+/* Optional: Style the input field inside the container */
+.input-container input {
+  width: 100%; /* Make the input take up the full width of the container */
+  padding: 10px; /* Add padding to make the input larger */
+  font-size: 18px; /* Increase the font size */
+  border-radius: 50px; /* Round the edges of the input field */
+  border: 2px solid #000; /* Optional: Add a border to the input field */
+  background-color: white; /* Ensure the input field has a white background */
+}
+
+#clear-storage {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+#clear-storage:hover {
+  background-color: darkred;
+}
+
+.tab-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  #sidebar {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 2px solid #ddd;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-height: none;
+  }
+  #map {
+    height: calc(100vh - 80px);
+    width: 100%;
+  }
+  #score-display {
+    font-size: 16px;
+    padding: 5px;
+    display: block; /* Make sure it's visible inside the sidebar */
+  }
+  #score-display:not(#sidebar #score-display) {
+    display: none; /* Hide score display outside the sidebar */
+  }
+  #correct-country-names {
+    display: none; /* Hide the correct-country-names section on mobile */
+  }
+  #incorrect-country-names {
+  display: none; /* Hide the incorrect-country-names section on mobile */
+}
+#tab-container  {
+  display: none; 
+}
+  #clear-storage {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  /* Hide the <h2> and <p> elements on mobile */
+  #sidebar h2,
+  #sidebar p {
+    display: none;
+  }
+}
